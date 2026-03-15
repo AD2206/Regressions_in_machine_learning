@@ -17,18 +17,31 @@ X_poly=poly_reg.fit_transform(X)
 lin_reg_2=LinearRegression() 
 lin_reg_2.fit(X_poly,Y)
 #visualizing linear regression results (for comparison)
-'''                   
+                   
 plt.scatter(X,Y,color='red')
 plt.plot(X,lin_reg.predict(X),color='blue')
 plt.title("Truth or Bluff ( LinearRegression )")
 plt.xlabel("Position level")
 plt.ylabel("Salary")
 plt.show()
-'''
+
 #visualizing polynomial regression results
 plt.scatter(X, Y, color = 'red')
 plt.plot(X, lin_reg_2.predict(poly_reg.fit_transform(X)), color = 'blue')
 plt.title('Truth or Bluff (Polynomial Regression)')
 plt.xlabel('Position level')
 plt.ylabel('Salary')
-plt.show()
+plt.show() 
+#visualizing for better results
+X_grid = np.arange(min(X), max(X), 0.1)
+X_grid = X_grid.reshape((len(X_grid), 1))
+plt.scatter(X, y, color = 'red')
+plt.plot(X_grid, lin_reg_2.predict(poly_reg.fit_transform(X_grid)), color = 'blue')
+plt.title('Truth or Bluff (Polynomial Regression)')
+plt.xlabel('Position level')
+plt.ylabel('Salary')
+plt.show() 
+#predicting a new result with linear regression
+lin_reg.predict([[6.5]])
+#Predicitng a new result with polynomial regression
+lin_reg_2.predict(poly_reg.fit_transform([[6.5]]))
